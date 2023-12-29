@@ -5,7 +5,6 @@ Python 模板仓库，功能包含：
 + 单元测试框架：基于 Pytest 和 Pytest-cov。
 + 日志配置：使用系统 logging 库作为日志门面，无缝集成 loguru。
 + 代码规范检查：遵循 PEP-8 规范，使用 flake8 插件。
-+ 流水线脚本：支持 GitHub Action 执行单测和单测覆盖率统计。
 + 模块打包配置：共享模块打包，支持其他工程导入使用。
 
 ## 环境构建
@@ -13,7 +12,7 @@ Python 模板仓库，功能包含：
 ### 前置准备
 1. 安装 conda
 
-    推荐使用[清华源](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)安装`anaconda`或`miniconda`。
+    推荐使用[清华源](https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/)安装 `anaconda` 或 `miniconda`。
 
 2. 安装 go-task
 
@@ -92,6 +91,8 @@ $ conda deactivate
 3. requirements.txt 以字典序排序；
 4. PEP-8 代码规范检查，可在 [.flake8](.flake8) 和 [.pre-commit-config.yaml](.pre-commit-config.yaml) 配置文件中调整配置；
 5. Python Import 重排序，按系统导入、三方导入、项目内部导入分成三组，可在` .pre-commit-config.yaml` 中调整配置。
+
+> 第一次运行需要到 GitHub 下载插件，可能会比较慢
 
 ```shell
 $ task pre-commit
