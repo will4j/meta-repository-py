@@ -13,3 +13,4 @@ with open(LOGGING_CONFIG, "r") as conf:
 
 if __name__ == '__main__':
     logger.info("Hello World")
+    logger.error("Hello World")

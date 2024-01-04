@@ -7,7 +7,7 @@ root:
   level: INFO
 handlers:
   loguru:
-    class: meta_repository.logging.LoguruInterceptHandler
+    class: meta_repository.loguru_logging.LoguruInterceptHandler
     # constructor param starts with loguru_
     loguru_format: "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> | <level>{level: <8}</level> | <cyan>{name}</cyan>:<cyan>{function}</cyan>:<cyan>{line}</cyan> - <level>{message}</level>"
     loguru_config:
@@ -16,8 +16,8 @@ handlers:
         # param: https://loguru.readthedocs.io/en/stable/api/logger.html#loguru._logger.Logger.add
         - sink: ext://sys.stdout
           level: INFO
-          format: ext://meta_repository.logging.compact_name_format
+          format: ext://meta_repository.loguru_logging.compact_name_format
           filter: 'lambda://record:record["level"].no < logging.ERROR'
         - sink: ext://sys.stderr
           level: ERROR
-          format: ext://meta_repository.logging.compact_name_format
+          format: ext://meta_repository.loguru_logging.compact_name_format

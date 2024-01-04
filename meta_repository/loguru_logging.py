@@ -64,9 +64,7 @@ class LoguruInterceptHandler(logging.Handler):
 
 
 class LoguruDictConfigurator(BaseConfigurator):
-    value_converters = {
-        "ext": "ext_convert",
-        "cfg": "cfg_convert",
+    value_converters = BaseConfigurator.value_converters | {
         "lambda": "lambda_convert",
     }
 
@@ -137,20 +135,6 @@ class LoguruDictConfigurator(BaseConfigurator):
                              '%r' % config)
         key, value = config.popitem()
         return key, value
-
-    def convert(self, value):
-        if not isinstance(value, str):
-            return value
-        m = self.CONVERT_PATTERN.match(value)
-        if m:
-            d = m.groupdict()
-            prefix = d['prefix']
-            converter = self.value_converters.get(prefix, None)
-            if converter:
-                suffix = d['suffix']
-                converter = getattr(self, converter)
-                value = converter(suffix)
-        return value
 
     def lambda_convert(self, value):
         """Default converter for the lambda:// protocol."""
